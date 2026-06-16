@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block body %}
+
+<!-- Sidebar overlay for mobile -->
+<div class="sidebar-overlay"></div>
+
+<div class="app-wrapper">
+  <!-- ── Sidebar ──────────────────────────────────────────── -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo-text">🚗 RideNow</div>
+      <div class="logo-sub">{% block sidebar_role %}Dashboard{% endblock %}</div>
+    </div>
+
+    <nav class="sidebar-nav">
+      {% block sidebar_nav %}{% endblock %}
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="{{ url_for('auth.logout') }}" class="sidebar-link text-danger">
+        <i class="bi bi-box-arrow-left nav-icon"></i>
+        Logout
+      </a>
+    </div>
+  </aside>
+
+  <!-- ── Main Content ─────────────────────────────────────── -->
+  <div class="main-content">
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="d-flex align-items-center gap-3">
+        <button class="btn-icon sidebar-toggle">
+          <i class="bi bi-list"></i>
+        </button>
+        <span class="topbar-title">{% block topbar_title %}Dashboard{% endblock %}</span>
+      </div>
+      <div class="topbar-actions">
+        <!-- Theme Toggle -->
+        <button class="btn-icon" data-theme-toggle title="Toggle theme">
+          <i class="bi bi-moon-fill"></i>
+        </button>
+        <!-- Notifications (demo) -->
+        <div class="position-relative">
+          <button class="btn-icon">
+            <i class="bi bi-bell"></i>
+          </button>
+          <span class="notif-badge">3</span>
+        </div>
+        <!-- User Avatar -->
+        <div class="dropdown">
+          <div class="avatar" data-bs-toggle="dropdown" style="cursor:pointer" title="{{ current_user.name }}">
+            {{ current_user.name[0].upper() }}
+          </div>
+          <ul class="dropdown-menu dropdown-menu-end" style="border:1px solid var(--border);background:var(--bg-card);border-radius:12px;box-shadow:var(--shadow-hover);padding:8px;">
+            <li><span class="dropdown-item-text fw-bold" style="color:var(--text)">{{ current_user.name }}</span></li>
+            <li><span class="dropdown-item-text small" style="color:var(--text-muted)">{{ current_user.email }}</span></li>
+            <li><hr class="dropdown-divider"></li>
+            {% block avatar_menu %}{% endblock %}
+            <li>
+              <a class="dropdown-item text-danger" href="{{ url_for('auth.logout') }}">
+                <i class="bi bi-box-arrow-left me-2"></i>Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <!-- Flash Messages -->
+    <div class="px-4 pt-3">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ 'danger' if category == 'error' else category }} alert-dismissible fade show" role="alert">
+            <i class="bi bi-{% if category == 'success' %}check-circle{% elif category == 'danger' or category == 'error' %}exclamation-circle{% elif category == 'warning' %}exclamation-triangle{% else %}info-circle{% endif %}-fill me-2"></i>
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          </div>
+        {% endfor %}
+      {% endwith %}
+    </div>
+
+    <!-- Page Content -->
+    <main class="page-content">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+</div>
+
+{% endblock %}

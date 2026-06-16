@@ -1,0 +1,206 @@
+{% extends "base.html" %}
+{% block title %}RideNow – Smart Ride Booking Platform{% endblock %}
+{% block body %}
+
+<!-- Navbar -->
+<nav class="landing-nav">
+  <div class="logo-text" style="font-size:1.4rem;font-weight:900;background:linear-gradient(135deg,#6c63ff,#43e97b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+    🚗 RideNow
+  </div>
+  <div class="d-flex align-items-center gap-3">
+    <a href="{{ url_for('pages.about') }}" class="text-muted text-decoration-none fw-500 d-none d-md-inline">About</a>
+    <a href="{{ url_for('pages.faq') }}" class="text-muted text-decoration-none fw-500 d-none d-md-inline">FAQ</a>
+    <a href="{{ url_for('pages.contact') }}" class="text-muted text-decoration-none fw-500 d-none d-md-inline">Contact</a>
+    <button class="btn-icon" data-theme-toggle title="Toggle Theme"><i class="bi bi-moon-fill"></i></button>
+    <a href="{{ url_for('auth.login') }}" class="btn btn-outline-primary btn-sm">Login</a>
+    <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-sm">Sign Up Free</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="landing-hero">
+  <div class="hero-content">
+    <div class="hero-badge"><i class="bi bi-lightning-fill"></i> India's Smartest Ride Platform</div>
+    <h1 class="hero-title">
+      Book a Ride<br>
+      <span class="gradient-text">Anywhere, Anytime</span>
+    </h1>
+    <p class="hero-subtitle">
+      Choose from Bikes, Autos, Mini Cabs, Sedans and SUVs.<br>
+      Real-time tracking, transparent fares, instant booking.
+    </p>
+    <div class="hero-actions">
+      <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg">
+        <i class="bi bi-person-plus-fill"></i> Book Your First Ride
+      </a>
+      <a href="{{ url_for('auth.driver_register') }}" class="btn btn-lg" style="background:rgba(255,255,255,0.1);color:#fff;border:2px solid rgba(255,255,255,0.3);backdrop-filter:blur(10px);">
+        <i class="bi bi-car-front-fill"></i> Become a Driver
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="stat-num">50K+</div>
+        <div class="stat-lbl">Happy Riders</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num">5K+</div>
+        <div class="stat-lbl">Drivers</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num">99%</div>
+        <div class="stat-lbl">On-Time Rate</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num">4.8★</div>
+        <div class="stat-lbl">Avg Rating</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How it Works -->
+<section style="padding:80px 0;background:var(--bg);">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-badge">How It Works</div>
+      <h2 class="section-title">Ride in 3 Simple Steps</h2>
+    </div>
+    <div class="row g-4 justify-content-center">
+      {% set steps = [
+        ('1', 'bi-geo-alt-fill', '#6c63ff', 'Set Your Location', 'Enter pickup and drop points. Our smart system calculates the optimal route instantly.'),
+        ('2', 'bi-car-front-fill', '#43e97b', 'Choose Your Ride', 'Pick from Bike, Auto, Mini, Sedan or SUV. View live fare estimates before booking.'),
+        ('3', 'bi-check-circle-fill', '#ff6584', 'Ride & Pay', 'Your driver arrives, you ride, pay by Cash, UPI or Card. Rate your experience!'),
+      ] %}
+      {% for num, icon, color, title, desc in steps %}
+      <div class="col-md-4">
+        <div class="text-center p-4 feature-card">
+          <div style="width:72px;height:72px;background:{{ color }}20;border-radius:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:2rem;color:{{ color }};">
+            <i class="bi {{ icon }}"></i>
+          </div>
+          <div style="font-size:0.75rem;font-weight:700;color:{{ color }};letter-spacing:2px;margin-bottom:8px;">STEP {{ num }}</div>
+          <h5 style="font-weight:700;margin-bottom:10px;">{{ title }}</h5>
+          <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.6;">{{ desc }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Vehicle Types -->
+<section style="padding:80px 0;background:var(--bg-card);">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-badge">Fleet</div>
+      <h2 class="section-title">Rides for Every Need</h2>
+    </div>
+    <div class="row g-3">
+      {% set vehicles = [
+        ('🏍️','Bike','₹8/km','Quick solo trips'),
+        ('🛺','Auto','₹12/km','City shortcuts'),
+        ('🚗','Mini Cab','₹14/km','Budget rides'),
+        ('🚙','Sedan','₹18/km','Comfortable travel'),
+        ('🚐','SUV','₹22/km','Group outings'),
+      ] %}
+      {% for emoji, name, price, desc in vehicles %}
+      <div class="col-6 col-md-4 col-lg">
+        <div class="vehicle-card" style="cursor:default">
+          <div class="vehicle-emoji">{{ emoji }}</div>
+          <div class="vehicle-name">{{ name }}</div>
+          <div class="vehicle-price">{{ price }}</div>
+          <div class="vehicle-eta">{{ desc }}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features-section">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-badge">Why RideNow</div>
+      <h2 class="section-title">Built for the Modern Commuter</h2>
+    </div>
+    <div class="row g-4">
+      {% set features = [
+        ('bi-shield-check-fill','#6c63ff','Safe & Verified','Every driver is background-verified and rated by real riders. Your safety is our top priority.'),
+        ('bi-lightning-charge-fill','#43e97b','Instant Booking','Book a ride in under 30 seconds. Smart matching assigns the nearest available driver.'),
+        ('bi-currency-rupee','#ff6584','Fair & Transparent Fares','No hidden charges. See the full fare before you book. Dynamic pricing shown clearly.'),
+        ('bi-map-fill','#ffc107','Live GPS Tracking','Track your ride in real time. Share your trip status with family and friends.'),
+        ('bi-credit-card-fill','#17a2b8','Multiple Payment Options','Pay with Cash, UPI or Card. Promo codes for extra savings on every ride.'),
+        ('bi-star-fill','#e91e63','Driver Ratings','Rate every trip and help us maintain the highest quality fleet in the city.'),
+      ] %}
+      {% for icon, color, title, desc in features %}
+      <div class="col-md-6 col-lg-4">
+        <div class="feature-card">
+          <div class="feature-icon" style="background:{{ color }}20;color:{{ color }};">
+            <i class="bi {{ icon }}"></i>
+          </div>
+          <h5 style="font-weight:700;margin-bottom:10px;">{{ title }}</h5>
+          <p style="color:var(--text-muted);font-size:0.88rem;line-height:1.6;">{{ desc }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:linear-gradient(135deg,#6c63ff,#5a52d5);padding:80px 0;text-align:center;">
+  <div class="container">
+    <h2 style="font-size:2.2rem;font-weight:800;color:#fff;margin-bottom:16px;">Ready to Ride?</h2>
+    <p style="color:rgba(255,255,255,0.8);font-size:1.05rem;margin-bottom:32px;">Join 50,000+ happy riders. Your next ride is just a tap away.</p>
+    <div class="d-flex gap-3 justify-content-center flex-wrap">
+      <a href="{{ url_for('auth.register') }}" class="btn btn-lg" style="background:#fff;color:#6c63ff;font-weight:700;border-radius:12px;padding:14px 36px;">
+        <i class="bi bi-person-plus-fill me-2"></i>Get Started Free
+      </a>
+      <a href="{{ url_for('auth.driver_register') }}" class="btn btn-lg" style="background:rgba(255,255,255,0.15);color:#fff;border:2px solid rgba(255,255,255,0.4);border-radius:12px;padding:14px 36px;">
+        <i class="bi bi-car-front-fill me-2"></i>Drive with Us
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="background:var(--bg-sidebar);padding:48px 0 24px;color:rgba(255,255,255,0.6);">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div style="font-size:1.4rem;font-weight:900;background:linear-gradient(135deg,#6c63ff,#43e97b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;">🚗 RideNow</div>
+        <p style="font-size:0.88rem;line-height:1.6;">Smart ride booking for modern India. Safe, affordable, instant.</p>
+      </div>
+      <div class="col-md-2">
+        <div style="font-weight:600;color:#fff;margin-bottom:12px;">Company</div>
+        <ul class="list-unstyled" style="font-size:0.88rem;">
+          <li class="mb-2"><a href="{{ url_for('pages.about') }}" style="color:rgba(255,255,255,0.6);text-decoration:none;">About Us</a></li>
+          <li class="mb-2"><a href="{{ url_for('pages.contact') }}" style="color:rgba(255,255,255,0.6);text-decoration:none;">Contact</a></li>
+          <li class="mb-2"><a href="{{ url_for('pages.faq') }}" style="color:rgba(255,255,255,0.6);text-decoration:none;">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <div style="font-weight:600;color:#fff;margin-bottom:12px;">Ride</div>
+        <ul class="list-unstyled" style="font-size:0.88rem;">
+          <li class="mb-2"><a href="{{ url_for('auth.login') }}" style="color:rgba(255,255,255,0.6);text-decoration:none;">Book a Ride</a></li>
+          <li class="mb-2"><a href="{{ url_for('auth.driver_register') }}" style="color:rgba(255,255,255,0.6);text-decoration:none;">Drive with Us</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <div style="font-weight:600;color:#fff;margin-bottom:12px;">Contact</div>
+        <div style="font-size:0.88rem;">
+          <div class="mb-2"><i class="bi bi-envelope me-2"></i>support@ridenow.in</div>
+          <div class="mb-2"><i class="bi bi-telephone me-2"></i>+91 1800 000 0000</div>
+          <div><i class="bi bi-geo-alt me-2"></i>Mumbai, Maharashtra, India</div>
+        </div>
+      </div>
+    </div>
+    <hr style="border-color:rgba(255,255,255,0.1);margin:32px 0 16px;">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <div style="font-size:0.82rem;">© 2024 RideNow. All rights reserved.</div>
+      <div style="font-size:0.82rem;">Made with ❤️ in India</div>
+    </div>
+  </div>
+</footer>
+
+{% endblock %}
