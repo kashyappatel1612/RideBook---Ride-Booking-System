@@ -156,8 +156,7 @@ Add screenshots here:
 * User Dashboard
 * Driver Dashboard
 * Admin Dashboard
-* Booking Page
-* Payment Page
+  
 
 ---
 
