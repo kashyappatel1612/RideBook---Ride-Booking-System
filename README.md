@@ -154,8 +154,8 @@ Add screenshots here:
 
 * Home Page
 * User Dashboard
-* Driver Dashboard
-* Admin Dashboard
+* Login page
+* Driver Registration
   
 
 ---
