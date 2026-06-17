@@ -200,7 +200,8 @@ This project helped me gain practical experience in:
 **Kashyap Patel**
 
 * GitHub: https://github.com/kashyapatel1612
-* LinkedIn: https://linkedin.com/in/kashyap-patel
+* LinkedIn: www.linkedin.com/in/kashyap-patel-710a9325a
+
 
 ---
 
