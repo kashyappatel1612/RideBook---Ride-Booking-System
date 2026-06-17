@@ -152,10 +152,10 @@ http://127.0.0.1:5000
 
 Add screenshots here:
 
-* ![Home Page](screenshot/1.png)
-* ![User Dashboard](screenshot/2.png)
-* ![Login Page](screenshot/3.png)
-* ![Driver Registration](screenshot/4.png)
+![Home Page](screenshot/1.png)
+![User Dashboard](screenshot/2.png)
+![Login Page](screenshot/3.png)
+![Driver Registration](screenshot/4.png)
   
 
 ---
