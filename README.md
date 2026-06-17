@@ -199,8 +199,8 @@ This project helped me gain practical experience in:
 
 **Kashyap Patel**
 
-* GitHub: https://github.com/yourusername
-* LinkedIn: https://linkedin.com/in/yourprofile
+* GitHub: https://github.com/kashyapatel1612
+* LinkedIn: https://linkedin.com/in/kashyap-patel
 
 ---
 
